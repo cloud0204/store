@@ -1,0 +1,86 @@
+
+.ftco-menu .nav-pills .nav-link {
+  border-radius: 0;
+  margin-bottom: 0;
+  color: #c49b63;
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px solid #c49b63;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.ftco-menu .nav-pills .nav-link.active,
+.ftco-menu .nav-pills .nav-link:hover,
+.btn.btn-primary.btn-outline-primary:hover {
+  color: white;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #c49b63;
+  border-bottom: 1px solid transparent;
+}
+.btn.btn-primary.btn-outline-primary {
+  border: 1px solid #c49b63;
+  background: transparent;
+  color: #c49b63;
+}
+a,
+a.page-link {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+a:hover,
+a.page-link:hover {
+  text-decoration: none;
+  color: #c49b63;
+}
+.tab-content {
+  width: 100%;
+}
+.menu-entry .img {
+  display: block;
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.edit,
+.remove {
+  color: red;
+  /* position: absolute; */
+  /* right: 0; */
+  /* padding: 0; */
+  background-color: transparent;
+  border: 0;
+  /* float: right; */
+  /* top: 0; */
+  bottom: 0;
+  right: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.8;
+}
+.edit {
+  color: green;
+  bottom: 100%;
+}
+
+.edit:hover,
+.remove:hover {
+  color: white;
+  transition: all 0.3s ease;
+  /* background: #c49b63; */
+  /* border-bottom: 1px solid transparent; */
+}
+* {
+  /* display: block; */
+  background: transparent;
+}

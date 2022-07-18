@@ -1,0 +1,158 @@
+<div class="items">
+  <h1>shop!!</h1>
+  <p>{{ msg }}</p>
+</div>
+<button @click="$store.state.kk++">{{ kk }}</button>
+<button @click="add">add</button>
+<button @click="update">update</button>
+<button @click="all">all</button>
+<section class="ftco-menu mb-5 pb-5">
+  <div class="container">
+    <div class="row d-md-flex">
+      <div class="col-lg-12 ftco-animate p-md-5 fadeInUp ftco-animated">
+        <h3>
+          category
+          <span class="edit" @click="createCategoryHandler">
+            <font-awesome-icon icon="fa-solid fa-plus" class="edit" />create
+          </span>
+        </h3>
+        <div class="row">
+          <div class="col-md-12 nav-link-wrap mb-5">
+            <div
+              class="nav ftco-animate nav-pills justify-content-center fadeInUp ftco-animated"
+              id="v-pills-tab"
+              role="tablist"
+              aria-orientation="vertical"
+            >
+              <span
+                class="nav-link"
+                :class="{ active: isActive(index) }"
+                id="v-pills-1-tab"
+                data-toggle="pill"
+                role="tab"
+                aria-controls="v-pills-1"
+                aria-selected="false"
+                v-for="(i, index) in category"
+                :key="i.id"
+                @click="getChildren(i.id, index)"
+              >
+                <div>
+                  <button class="edit" @click="editCategoryHandler">
+                    <font-awesome-icon icon="fa-solid fa-pen" /></button
+                  ><button class="remove" @click="removeCategoryHandler(i.id)">
+                    <font-awesome-icon icon="fa-solid fa-x" />
+                  </button>
+                </div>
+                {{ i.name }}
+                <label><input type="text" :value="i.name"></label>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-12 d-flex align-items-center">
+            <div
+              class="tab-content ftco-animate fadeInUp ftco-animated"
+              id="v-pills-tabContent"
+            >
+              <h5>
+                Product ({{ children.length }})｜page({{ page + 1 }}/{{
+                getChildrenPage.length }})
+                <span class="edit">
+                  <font-awesome-icon
+                    icon="fa-solid fa-plus"
+                    class="edit"
+                  />create
+                </span>
+              </h5>
+              <p
+                @click="
+                      getOrderByPriceDes((isOrderByPriceDes = !isOrderByPriceDes))
+                    "
+              >
+                <a class="btn btn-primary btn-outline-primary"
+                  >price <span v-if="isOrderByPriceDes == null">▲▼</span
+                  ><span v-else
+                    ><span v-show="isOrderByPriceDes">▲</span
+                    ><span v-show="!isOrderByPriceDes">▼</span></span
+                  ></a
+                >
+              </p>
+              <div
+                class="tab-pane fade show active"
+                id="v-pills-0"
+                role="tabpanel"
+                aria-labelledby="v-pills-0-tab"
+              >
+                <div class="row">
+                  <div
+                    class="col-md-3"
+                    v-for="i in getChildrenPage[page]"
+                    :key="i.id"
+                  >
+                    <div class="menu-entry">
+                      <div class="text text-center pt-4">
+                        <div class="operating text-right">
+                          <button class="edit" @click="showHandler">
+                            <font-awesome-icon icon="fa-solid fa-pen" /></button
+                          ><button
+                            class="remove"
+                            @click="removeItemHandler(i.id)"
+                          >
+                            <font-awesome-icon icon="fa-solid fa-x" />
+                          </button>
+                        </div>
+                        <a
+                          href="https://preview.colorlib.com/theme/coffeeblend/shop.html#"
+                          class="img"
+                          style="
+                            background-image: url('https://i.imgur.com/toJy2rB.jpg');
+                          "
+                        ></a>
+                        <h3>
+                          <a
+                            href="https://preview.colorlib.com/theme/coffeeblend/product-single.html"
+                            >{{ i.title }}</a
+                          >
+                        </h3>
+                        <p>{{ i.description }}</p>
+                        <p class="price">
+                          <span>${{ i.price }}</span>
+                        </p>
+                        <p>
+                          <a
+                            href="https://preview.colorlib.com/theme/coffeeblend/cart.html"
+                            class="btn btn-primary btn-outline-primary"
+                            >Add to Cart</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item" :class="{ disabled: page == 0 }">
+                <a class="page-link" @click="page--">Previous</a>
+              </li>
+              <li
+                class="page-item"
+                v-for="(i, index) in getChildrenPage"
+                :key="index"
+              >
+                <a class="page-link" @click="page = index">{{ index + 1 }}</a>
+              </li>
+              <li
+                class="page-item"
+                :class="{ disabled: page == getChildrenPage.length - 1 }"
+              >
+                <a class="page-link" @click="page++">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
